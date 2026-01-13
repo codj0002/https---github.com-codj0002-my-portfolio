@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Videography — Loic Blaise Alan Codjia</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="category-page">
+      <div class="container">
+        <h1>Videography</h1>
+        <p class="lead">Cinematic reels, commercials, and short films.</p>
+
+        <!-- Small interactive sample area: click to open a larger sample -->
+        <div class="samples">
+          <div class="sample-card">
+            <img src="assets/showreel-placeholder.svg" alt="Sample reel"/>
+            <button class="view-sample" data-src="assets/showreel-placeholder.svg">View sample</button>
+          </div>
+        </div>
+
+        <div class="page-controls">
+          <a href="index.html?kuro=open" class="btn">Back to Kuro's Den</a>
+          <a href="photography.html" class="btn">Next: Photography</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Simple modal for viewing samples -->
+    <div id="sampleModal" class="simple-modal" aria-hidden="true">
+      <button id="sampleClose" class="modal-close" aria-label="Close">×</button>
+      <img id="sampleImg" src="" alt="">
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© Loic Blaise Alan Codjia — Videography</div>
+  </footer>
+
+  <script>
+  // Minimal JS for sample modal (concise comments)
+  document.addEventListener('DOMContentLoaded', ()=>{
+    const modal = document.getElementById('sampleModal');
+    const sampleImg = document.getElementById('sampleImg');
+    const close = document.getElementById('sampleClose');
+    Array.from(document.querySelectorAll('.view-sample')).forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const src = btn.dataset.src; sampleImg.src = src; modal.setAttribute('aria-hidden','false');
+      });
+    });
+    close.addEventListener('click', ()=>{ modal.setAttribute('aria-hidden','true'); sampleImg.src = ''; });
+    modal.addEventListener('click', e=>{ if(e.target===modal) { modal.setAttribute('aria-hidden','true'); sampleImg.src=''; }});
+    document.addEventListener('keydown', e=>{ if(e.key==='Escape') { modal.setAttribute('aria-hidden','true'); sampleImg.src=''; }});
+  });
+  </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolio — Videography · Photography · Visual & Graphic Design</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+
+
+    <!-- Kuro's Den interactive card: styled like the referenced embed but with no background image -->
+    <section id="kuros-den" class="section">
+      <div class="container">
+        <h3>Kuro's Den</h3>
+        <div class="kuro-wrap">
+          <!-- Main card (fixed size similar to iframe: 345x661) -->
+          <div class="kuro-card" role="region" aria-label="Kuro's Den interactive card">
+            <div class="kuro-top">
+              <div class="kuro-brand">Kuro's Den</div>
+              <div class="kuro-controls" aria-hidden="true">● ● ●</div>
+            </div>
+
+            <!-- Center: interactive text/button (no background image) -->
+            <div class="kuro-body">
+              <!-- Primary interactive text; toggles the folder-style categories -->
+              <button id="kuroLaunch" class="kuro-launch" aria-expanded="false" aria-controls="categoriesList">Welcome to the Kuro's Den</button>
+
+              <!-- Folder-style categories panel (hidden by default). Concise comments mark purpose. -->
+              <!-- Folder-style categories panel (hidden by default). Each item has an icon and a concise description. -->
+              <div id="categoriesList" class="kuro-submenu" aria-hidden="true" role="menu" aria-label="Categories">
+                <a class="kuro-subitem" role="menuitem" href="videography.html">
+                  <!-- Icon (video camera) -->
+                  <span class="kuro-icon" aria-hidden="true"> <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 10.5V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4.5l4 4v-11l-4 4z" fill="currentColor"/></svg></span>
+                  <span class="kuro-meta">
+                    <span class="kuro-title">Videography</span>
+                    <span class="kuro-desc">Cinematic reels & short films</span>
+                  </span>
+                </a>
+
+                <a class="kuro-subitem" role="menuitem" href="photography.html">
+                  <!-- Icon (camera) -->
+                  <span class="kuro-icon" aria-hidden="true"> <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 7h3l2-2h6l2 2h3v12H4z" fill="currentColor"/><circle cx="12" cy="13" r="3" fill="#fff"/></svg></span>
+                  <span class="kuro-meta">
+                    <span class="kuro-title">Photography</span>
+                    <span class="kuro-desc">Portraits & commercial work</span>
+                  </span>
+                </a>
+
+                <a class="kuro-subitem" role="menuitem" href="graphic-design.html">
+                  <!-- Icon (palette) -->
+                  <span class="kuro-icon" aria-hidden="true"> <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a10 10 0 1 0 9.95 9.41A3.5 3.5 0 0 1 18.5 8 2.5 2.5 0 0 0 16 5.5 2.5 2.5 0 0 0 13.5 3 3.5 3.5 0 0 1 12 2z" fill="currentColor"/></svg></span>
+                  <span class="kuro-meta">
+                    <span class="kuro-title">Graphic Design</span>
+                    <span class="kuro-desc">Posters, campaigns & assets</span>
+                  </span>
+                </a>
+              </div>
+            </div>
+
+            <div class="kuro-bottom">Interactive — no image background</div>
+          </div>
+          <!-- Overlay backdrop used when folder panel is open; clicking it closes the panel -->
+          <div id="kuroOverlay" class="kuro-overlay" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© Your Name — Visual Storyteller</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

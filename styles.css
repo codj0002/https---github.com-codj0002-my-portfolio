@@ -1,0 +1,119 @@
+:root{
+  --accent:#111111;
+  --muted:#666;
+  --bg:#ffffff;
+  --maxWidth:1100px;
+}
+*{box-sizing:border-box}
+body{font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;margin:0;color:var(--accent);background:var(--bg);-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column;}
+.container{max-width:var(--maxWidth);margin:0 auto;padding:2rem}
+
+/* Center main content vertically while keeping footer at bottom */
+main{flex:1;display:flex;align-items:center;justify-content:center}
+.site-header{border-bottom:1px solid #eee;background:#fff}
+.site-header .container{display:flex;align-items:center;justify-content:space-between}
+.logo{margin:0;font-size:1.1rem}
+.nav a{margin-left:1rem;color:var(--muted);text-decoration:none}
+.hero{padding:4rem 0;text-align:center;background:linear-gradient(180deg, #fafafa, #fff)}
+.hero h2{margin:0 0 0.5rem;font-size:1.6rem}
+.section{padding:3rem 0;border-top:1px solid #f2f2f2}
+.media-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.media-grid img{width:100%;height:220px;object-fit:cover;border-radius:6px}
+.caption{font-size:0.9rem;color:var(--muted);margin-top:0.5rem}
+.bio{margin-top:1rem;color:var(--muted);max-width:900px;margin-left:auto;margin-right:auto}
+.video-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px}
+.video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+.feature-list{display:flex;gap:1rem;margin-top:1rem}
+.feature-list > div{background:#f7f7f7;padding:1rem;border-radius:6px}
+
+/* Kuro's Den styles: an interactive card matching a similar embed size (no image background) */
+.kuro-wrap{margin:1rem 0}
+.kuro-card{width:100vw;height:100vh;max-width:100%;margin:0 auto;background:var(--kuro-bg,#efe6d1);color:var(--kuro-text,#2a2a2a);border-radius:0;overflow:hidden;display:flex;flex-direction:column;box-shadow:none;transition:transform .28s cubic-bezier(.2,.8,.2,1), box-shadow .28s ease}
+.kuro-card.kuro-open{animation:bounceCard .5s cubic-bezier(.2,.8,.2,1);box-shadow:0 30px 60px rgba(0,0,0,0.12)}
+
+/* Bounce keyframe for card */
+@keyframes bounceCard{
+  0%{transform:translateY(0)}
+  30%{transform:translateY(-18px)}
+  60%{transform:translateY(6px)}
+  100%{transform:translateY(0)}
+}
+.kuro-top{padding:12px 16px;display:flex;justify-content:space-between;align-items:center;font-weight:600;font-size:0.95rem;border-bottom:1px solid rgba(0,0,0,0.06)}
+.kuro-brand{color:var(--kuro-text,#2a2a2a)}
+.kuro-controls{color:rgba(0,0,0,0.35);font-size:0.9rem}
+.kuro-body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1rem}
+.kuro-launch{background:transparent;color:var(--kuro-text,#2a2a2a);border:2px solid rgba(0,0,0,0.06);padding:16px 22px;border-radius:10px;cursor:pointer;font-size:1.1rem;font-weight:600}
+.kuro-launch:focus{outline:3px solid rgba(0,0,0,0.06);outline-offset:4px}
+/* Overlay + folder-style submenu: centered panel that drops in with a bounce */
+.kuro-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.45);opacity:0;pointer-events:none;transition:opacity .28s ease;z-index:80}
+.kuro-overlay[aria-hidden="false"]{opacity:1;pointer-events:auto}
+
+.kuro-submenu{position:fixed;left:50%;top:120px;transform:translateX(-50%) translateY(-8px);display:flex;flex-direction:column;gap:12px;padding:18px;border-radius:12px;background:var(--kuro-bg,#efe6d1);min-width:320px;max-width:90%;box-shadow:0 18px 40px rgba(0,0,0,0.12);opacity:0;pointer-events:none;transform-origin:center top;z-index:90}
+.kuro-submenu[aria-hidden="false"]{opacity:1;pointer-events:auto;animation:folderBounce .5s cubic-bezier(.2,.8,.2,1)}
+
+/* Subitem now includes icon + meta */
+.kuro-subitem{display:flex;gap:12px;align-items:flex-start;background:#fff;border:0;padding:12px 14px;text-align:left;cursor:pointer;border-radius:8px;color:var(--kuro-text,#2a2a2a);box-shadow:0 6px 18px rgba(0,0,0,0.06);transition:transform .18s ease, background .18s ease}
+.kuro-subitem .kuro-icon{display:inline-flex;align-items:center;justify-content:center;color:var(--kuro-text,#2a2a2a);flex:0 0 32px}
+.kuro-subitem .kuro-meta{display:flex;flex-direction:column}
+.kuro-subitem .kuro-title{font-weight:700}
+.kuro-subitem .kuro-desc{font-size:0.9rem;color:rgba(0,0,0,0.6);margin-top:4px}
+.kuro-subitem.kuro-active{transform:scale(0.98);background:rgba(0,0,0,0.03)}
+
+.kuro-subitem{transform:translateY(6px);opacity:0;transition:transform .28s ease, opacity .28s ease}
+.kuro-submenu[aria-hidden="false"] .kuro-subitem{transform:translateY(0);opacity:1}
+.kuro-submenu[aria-hidden="false"] .kuro-subitem:nth-child(1){transition-delay:0.02s}
+.kuro-submenu[aria-hidden="false"] .kuro-subitem:nth-child(2){transition-delay:0.08s}
+.kuro-submenu[aria-hidden="false"] .kuro-subitem:nth-child(3){transition-delay:0.14s}
+
+@keyframes folderBounce{
+  0%{transform:translateX(-50%) translateY(-12px) scaleY(.96);opacity:0}
+  50%{transform:translateX(-50%) translateY(18px) scaleY(1.03);opacity:1}
+  100%{transform:translateX(-50%) translateY(0) scaleY(1);opacity:1}
+}
+.kuro-bottom{padding:10px 16px;font-size:0.85rem;border-top:1px solid rgba(0,0,0,0.06);color:rgba(0,0,0,0.6)}
+
+/* Utility: prevent body scroll when overlay is open */
+.no-scroll{overflow:hidden;height:100vh}
+
+@media (max-width:420px){
+  .kuro-card{width:100%;height:auto}
+  .kuro-submenu{top:88px;left:50%;transform:translateX(-50%)}
+}
+
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+.gallery-item{width:100%;height:160px;object-fit:cover;display:block;border-radius:6px;cursor:pointer}
+.site-footer{padding:1rem 0;text-align:center;border-top:1px solid #f2f2f2;color:var(--muted)}
+
+/* Micro interactions and accessibility improvements */
+button, a{transition:all .14s ease}
+:focus{outline:3px solid rgba(0,120,212,0.12);outline-offset:2px}
+.kuro-launch:hover,.kuro-launch:focus{transform:translateY(-3px);box-shadow:0 14px 28px rgba(0,0,0,0.15)}
+.kuro-menu-item:hover,.kuro-subitem:hover{background:rgba(255,255,255,0.03)}
+.showreel-link img{border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.08)}
+
+/* Simple modal used on category pages */
+.simple-modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.7);z-index:200;opacity:0;pointer-events:none;transition:opacity .18s ease}
+.simple-modal[aria-hidden="false"]{opacity:1;pointer-events:auto}
+.simple-modal img{max-width:86%;max-height:86%;border-radius:8px}
+.simple-modal .modal-close{position:absolute;top:18px;right:22px;background:transparent;border:0;color:#fff;font-size:2rem;cursor:pointer}
+
+/* Category page small utilities */
+.category-page{padding:4rem 0}
+.lead{color:var(--muted)}
+.samples{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1rem}
+.sample-card{background:#fff;padding:12px;border-radius:8px;display:flex;flex-direction:column;align-items:center}
+.sample-card img{width:100%;height:180px;object-fit:cover;border-radius:6px}
+.page-controls{display:flex;gap:8px;margin-top:1rem}
+.btn{background:#111;color:#fff;padding:8px 12px;border-radius:6px;text-decoration:none}
+
+/* Small typographic polish */
+.logo{font-weight:700;letter-spacing:0.2px}
+.hero h2{letter-spacing:0.2px}
+
+
+/* Responsive tweaks */
+@media (max-width:600px){
+  .site-header .container{padding:0 1rem}
+  .container{padding:1rem}
+  .hero h2{font-size:1.25rem}
+}

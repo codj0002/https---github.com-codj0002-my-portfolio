@@ -1,0 +1,11 @@
+{
+  "name": "portfolio-website",
+  "version": "1.0.0",
+  "description": "Minimal static portfolio for Loic Blaise Alan Codjia",
+  "scripts": {
+    "preview": "python -m http.server 8000",
+    "start": "python -m http.server 8000"
+  },
+  "author": "Loic Blaise Alan Codjia",
+  "license": "MIT"
+}
